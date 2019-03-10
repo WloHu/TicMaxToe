@@ -18,6 +18,6 @@ def test_minimax(create_board, state, expected):
     board = create_board(state)
     node = Node(board, 'O', 'X')
     minimax = Minimax(node)
-    assert minimax.minimax() == expected
+    assert minimax.evaluate() == expected
 
 

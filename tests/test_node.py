@@ -25,7 +25,6 @@ EXPECTED_CALC = (
 @pytest.mark.parametrize("state", BOARD_STATES)
 def test_gen_children(create_board, state):
     node = Node(create_board(state), prev_piece='X', next_piece='O')
-    node.gen_children()
 
     print(node.board)
     if not node.board.possible_moves():
@@ -41,14 +40,12 @@ def test_gen_children(create_board, state):
 @pytest.mark.parametrize("state, expected", zip(BOARD_STATES, IS_TERMINAL_EXPECTED))
 def test_is_terminal(create_board, state, expected):
     node = Node(create_board(state), prev_piece='X', next_piece='O')
-    node.gen_children()
 
     assert node.is_terminal() == expected
 
 @pytest.mark.parametrize("state, expected", zip(BOARD_STATES, EXPECTED_CALC))
 def test_calc_value(create_board, state, expected):
     node = Node(create_board(state), prev_piece='X', next_piece='O')
-    node.gen_children()
     if not node.is_terminal():
         assert pytest.raises(AssertionError)
     else:

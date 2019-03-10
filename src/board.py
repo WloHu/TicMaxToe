@@ -14,11 +14,10 @@ class Board:
 
     def is_winning(self):
         for elem in self.winning_conditions:
-            temp_set = set([self.state[x] for x in elem])
+            temp_set = {self.state[x] for x in elem}
             if None not in temp_set and len(temp_set) == 1:
                 return True
-        else:
-            return False
+        return False
 
     def make_move(self, piece, move):
         self.state[move] = piece
@@ -27,13 +26,12 @@ class Board:
         return [i for i, elem in enumerate(self.state) if elem is None]
 
     def copy_board(self):
-       return Board(state=self.state[:])
+        return Board(state=self.state[:])
 
     def __str__(self):
-       return '''
+        return '''
     {0} | {1} | {2}
    -----------
     {3} | {4} | {5}
    -----------
     {6} | {7} | {8}'''.format(*[e if e is not None else " " for e in self.state])
-
