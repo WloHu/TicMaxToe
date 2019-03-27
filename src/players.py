@@ -30,6 +30,9 @@ class HumanPlayer(IPlayer):
     def move(self, position):
         self.board.make_move(self._piece, position)
 
+    def opponent_piece(self):
+        return Pieces.X if self._piece == Pieces.O else Pieces.O
+
 
 class AiPlayer(IPlayer):
 

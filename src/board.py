@@ -10,7 +10,7 @@ class Board:
         if state is not None:
             self.state = state
         else:
-            state = [None] * 9
+            self.state = [None] * 9
 
     def is_winning(self):
         for elem in self.winning_conditions:
