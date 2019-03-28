@@ -1,3 +1,5 @@
+from .pieces import Pieces
+
 class Board:
 
     winning_conditions = (
